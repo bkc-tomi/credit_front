@@ -1,3 +1,9 @@
+import Layout from "../components/layout";
+
 export default function Export() {
-    return <h1>Export</h1>
+    return (
+        <Layout>
+            <h1>Export</h1>
+        </Layout>
+    )
 }

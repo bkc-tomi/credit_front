@@ -1,3 +1,12 @@
+import Link from "next/link";
+import Layout from "../components/layout";
+
 export default function Import() {
-    return <h1>Import</h1>
+    return (
+        <Layout>
+            <div>
+                Import
+            </div>
+        </Layout>
+    )
 }
