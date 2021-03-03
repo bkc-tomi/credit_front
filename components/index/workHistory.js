@@ -16,7 +16,7 @@ export default function WorkHistory() {
             <h2 className="text-yellow-500 text-lg text-center">- 職歴情報 -</h2>
             <div>
                 <ListContent id="work1">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2021/04/01</div>
                         <div className="col-span-2 flex flex-col">
                             <div className="flex flex-row flex-wrap">
@@ -37,7 +37,7 @@ export default function WorkHistory() {
                     </div>
                 </ListContent>
                 <ListContent id="work2">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2021/04/01</div>
                         <div className="col-span-2 flex flex-col">
                             <div className="flex flex-row flex-wrap">

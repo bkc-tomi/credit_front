@@ -12,13 +12,13 @@ export default function License() {
             <h2 className="text-yellow-500 text-lg text-center">- 免許・資格 -</h2>
             <div>
                 <ListContent id="li-1">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2021/04/01</div>
                         <div className="col-span-2 text-lg font-semibold">英検一級</div>
                     </div>
                 </ListContent>
                 <ListContent id="li-2">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2021/07/01</div>
                         <div className="col-span-2 text-lg font-semibold">漢検一級</div>
                     </div>

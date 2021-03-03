@@ -16,7 +16,7 @@ export default function Motivation() {
         <div className="p-2 md:p-6">
             <h2 className="text-yellow-500 text-lg text-center">- 志望動機 -</h2>
             <ListContent>
-                <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                <div className="grid grid-cols-3">
                     <div>株式会社　＋＋＋＋＋</div>
                     <div className="col-span-2 flex flex-col">
                         <div className="my-3">

@@ -13,7 +13,7 @@ export default function EducationHistory() {
             <h2 className="text-yellow-500 text-lg text-center">- 学歴情報 -</h2>
             <div>
                 <ListContent id="eh1">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2021/04/01</div>
                         <div className="col-span-2 grid grid-cols-5">
                             <div className="col-span-5 md:col-span-4 text-lg font-semibold">熊本県立 ************</div>
@@ -22,7 +22,7 @@ export default function EducationHistory() {
                     </div>
                 </ListContent>
                 <ListContent id="eh2">
-                    <div className="grid grid-cols-3 md:mx-16 md:my-2">
+                    <div className="grid grid-cols-3">
                         <div className="text-gray-400">2022/03/01</div>
                         <div className="col-span-2 grid grid-cols-5">
                             <div className="col-span-5 md:col-span-4 text-lg font-semibold">熊本県立 ************</div>
