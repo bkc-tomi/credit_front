@@ -1,10 +1,15 @@
-import Link from "next/link";
 import Layout from "../components/common/layout";
+import Title from "../components/generate_pdf/title";
+import Form from "../components/generate_pdf/form";
 
 export default function GeneratePdf() {
     return (
         <Layout>
-            <h1>GeneratePdf</h1>
+            <div className="flex flex-col my-3 pb-10">
+                <Title />
+
+                <Form />
+            </div>
         </Layout>
     )
 }
