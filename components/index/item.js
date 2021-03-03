@@ -8,7 +8,8 @@ import InputMail from "../common/inputMail";
 import TextArea from "../common/textarea";
 import Button from "../common/button";
 
-export default function Item({ type, value="", id="" }) {
+export default function Item({ type, propsValue="", id="", cls="" }) {
+    const applyCls =`m-2 ${ cls }`
     const [flg, setFlg] = useState(false);
 
     const handleFlg = () => {
@@ -24,7 +25,7 @@ export default function Item({ type, value="", id="" }) {
         div.className = "md:block";
     }
     
-    const handleHide = (e) => {
+    const handleHide = () => {
         const div = document.getElementById(`${ id }_hover`);
         div.className = "md:hidden";
     }
@@ -32,15 +33,15 @@ export default function Item({ type, value="", id="" }) {
     const returnInput = () => {
         switch (type) {
             case "mail":
-                return <InputMail id={ id } cls="m-2" value={ value } />;
+                return <InputMail id={ id } cls="m-2" propsValue={ propsValue } />;
             case "date":
-                return <InputDate id={ id } cls="m-2" value={ value } />;
+                return <InputDate id={ id } cls="m-2" propsValue={ propsValue } />;
             case "number":
-                return <InputNumber id={ id } cls="m-2" value={ value } />;
+                return <InputNumber id={ id } cls="m-2" propsValue={ propsValue } />;
             case "textarea":
-                return <TextArea id={ id } cls="m-2" value={ value } />;
+                return <TextArea id={ id } cls="m-2" propsValue={ propsValue } />;
             default:
-                return <InputText id={ id } cls="m-2" value={ value } />;
+                return <InputText id={ id } cls="m-2" propsValue={ propsValue } />;
         }
     }
     const input = returnInput();
@@ -78,7 +79,7 @@ export default function Item({ type, value="", id="" }) {
                 onTouchStartCapture={ () => handleDisplay() }
                 onTouchEnd={ () => handleHide() }
             >
-                <Text cls="m-2" >{ value }</Text>
+                <Text cls={ applyCls } >{ propsValue }</Text>
                 <div id={`${id}_hover`} className="md:hidden">
                     <Button func={() => handleFlg() }>
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

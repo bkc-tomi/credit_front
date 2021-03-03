@@ -1,19 +1,20 @@
 import Item from "./item";
 import ListInput from "./listInput";
+import ListContent from "./listContents";
 
 export default function BasicInfo() {
     const address = [
-        {type: "text", name: "zipcode", id: "", displayName: "郵便番号", value: "", cls: "w-full"},
-        {type: "text", name: "address_kana", id: "", displayName: "ふりがな", value: "", cls: "w-full"},
-        {type: "text", name: "address", id: "", displayName: "住所", value: "", cls: "w-full"},
+        {type: "text", name: "zipcode", id: "", displayName: "郵便番号", propsValue: "", cls: "w-full"},
+        {type: "text", name: "address_kana", id: "", displayName: "ふりがな", propsValue: "", cls: "w-full"},
+        {type: "text", name: "address", id: "", displayName: "住所", propsValue: "", cls: "w-full"},
     ];
     
     const phoneNumber = [
-        {type: "text", name: "phone-number", id: "", displayName: "電話番号", value: "", cls: "w-full"}
+        {type: "text", name: "phone-number", id: "", displayName: "電話番号", propsValue: "", cls: "w-full"}
     ];
     
     const mail = [
-        {type: "mail", name: "mail", id: "", displayName: "メール", value: "", cls: "w-full"}
+        {type: "mail", name: "mail", id: "", displayName: "メール", propsValue: "", cls: "w-full"}
     ];
 
     return (
@@ -29,42 +30,37 @@ export default function BasicInfo() {
           <div className="md:col-span-3">
             <h2 className="text-yellow-500 text-lg text-center">- 基本情報 -</h2>
             <div>
-              <Item value="ふりがな" id="kana" type="text"/>
-              <Item value="名前" id="name" />
-              <Item value="性別" id="gender" />
-              <Item value="生年月日" id="birth" type="date" />
-              <Item value="年齢" id="years" type="number" />
+              <Item propsValue="ふりがな" id="kana" type="text" cls="text-sm"/>
+              <Item propsValue="名前" id="name" cls="text-lg font-semibold"/>
+              <Item propsValue="性別" id="gender" cls="text-gray-400"/>
+              <Item propsValue="生年月日" id="birth" type="date" cls="text-gray-400"/>
+              <Item propsValue="年齢" id="years" type="number"cls="text-gray-400" />
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- 住所 -</h3>
-              <ul>
-                <li className="my-1">
+              <ListContent id="address1">
                   <div className="">0960601</div>
-                  <div className="">くまもとけんうきしおがわまちきたおの1180</div>
-                  <div className="">熊本県宇城市小川町北小野1180</div>
-                </li>
-              </ul>
+                  <div className="text-sm">くまもとけんうきしおがわまちきたおの1180</div>
+                  <div className="font-semibold mb-2">熊本県宇城市小川町北小野1180</div>
+              </ListContent>
               <ListInput inputs={ address }/>
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- 電話番号 -</h3>
-              <ul>
-                <li className="my-1">
-                  <div className="">09073895170</div>
-                </li>
-              </ul>
+              <ListContent id="phone1">
+                  <div className="mb-2">09073895170</div>
+              </ListContent>
+
               <ListInput inputs={ phoneNumber }/>
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- メールアドレス -</h3>
-              <ul>
-                <li className="my-1">
-                  <div className="">bkc.tomi1979@gmail.com</div>
-                </li>
-              </ul>
+              <ListContent id="mail1">
+                  <div className="mb-2">bkc.tomi1979@gmail.com</div>
+              </ListContent>
               <ListInput inputs={ mail }/>
             </div>
           </div>

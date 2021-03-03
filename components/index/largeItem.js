@@ -4,7 +4,7 @@ import Text from "../common/text";
 import TextArea from "../common/textarea";
 import Button from "../common/button";
 
-export default function LargeItem({ value="", id="" }) {
+export default function LargeItem({ propsValue="", id="" }) {
     const [flg, setFlg] = useState(false);
 
     const handleFlg = () => {
@@ -29,7 +29,7 @@ export default function LargeItem({ value="", id="" }) {
         // インプットを表示
         return (
             <div className="flex justify-start items-center">
-                <TextArea id={ id } cls="m-2" value={ value } />
+                <TextArea id={ id } cls="m-2" propsValue={ propsValue } />
                 <Button id={ `${ id }_submit` } cls="mr-2">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -58,7 +58,7 @@ export default function LargeItem({ value="", id="" }) {
                 onTouchStartCapture={ () => handleDisplay() }
                 onTouchEnd={ () => handleHide() }
             >
-                <Text cls="m-2" >{ value }</Text>
+                <Text cls="m-2" >{ propsValue }</Text>
                 <div id={`${id}_hover`} className="md:hidden">
                     <Button func={() => handleFlg() }>
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

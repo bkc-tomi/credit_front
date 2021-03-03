@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default function TextArea({ name="", value="", cls="", id="" }) {
+export default function TextArea({ name="", propsValue="", cls="", id="" }) {
     const applyCls = `border-2 border-yellow-500 focus:outline-none w-full ${ cls }`;
-    const [val, setVal] = useState(value);
+    const [val, setVal] = useState(propsValue);
 
     const handleVal = (e) => {
         setVal(e.target.value);

@@ -19,7 +19,7 @@ export default function ListInput({ inputs }) {
     return (
         <div>
             <div 
-                className="text-yellow-500 cursor-pointer"
+                className="text-yellow-500 cursor-pointer float-right"
                 onClick={ (e) => handleShow(e) }
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -40,7 +40,7 @@ export default function ListInput({ inputs }) {
                                                 <InputMail 
                                                     id={ input.id }
                                                     name={ input.name }
-                                                    value={ input.value }
+                                                    propsValue={ input.propsValue }
                                                     cls={input.cls }
                                                 />
                                             </div>
@@ -54,7 +54,7 @@ export default function ListInput({ inputs }) {
                                                 <InputDate
                                                     id={ input.id }
                                                     name={ input.name }
-                                                    value={ input.value }
+                                                    propsValue={ input.propsValue }
                                                     cls={input.cls }
                                                 />
                                             </div>
@@ -68,7 +68,7 @@ export default function ListInput({ inputs }) {
                                                 <InputNumber 
                                                     id={ input.id }
                                                     name={ input.name }
-                                                    value={ input.value }
+                                                    propsValue={ input.propsValue }
                                                     cls={input.cls }
                                                 />
                                             </div>
@@ -82,7 +82,7 @@ export default function ListInput({ inputs }) {
                                                 <TextArea 
                                                     id={ input.id }
                                                     name={ input.name }
-                                                    value={ input.value }
+                                                    propsValue={ input.propsValue }
                                                     cls={input.cls }
                                                 />
                                             </div>
@@ -96,7 +96,7 @@ export default function ListInput({ inputs }) {
                                                 <Input 
                                                     id={ input.id }
                                                     name={ input.name }
-                                                    value={ input.value }
+                                                    propsValue={ input.propsValue }
                                                     cls={input.cls }
                                                 />
                                             </div>

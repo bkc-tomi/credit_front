@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default function InputMail({ name="", value="", cls="", id="" }) {
+export default function InputMail({ name="", propsValue="", cls="", id="" }) {
     const applyCls = `border-b-2 border-yellow-500 focus:outline-none ${ cls }`;
-    const [val, setVal] = useState(value);
+    const [val, setVal] = useState(propsValue);
 
     const handleVal = (e) => {
         setVal(e.target.value);
