@@ -1,10 +1,11 @@
-import Link from "next/link";
 import Layout from "../components/common/layout";
 
 export default function NotFound() {
     return (
         <Layout>
-            <h1>NotFound</h1>
+            <div className="flex flex-col my-3 pb-10">
+                すみません。あなたのリクエストは見つかりませんでした。
+            </div>
         </Layout>
     )
 }
