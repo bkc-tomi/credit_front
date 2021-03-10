@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useEffect } from "react";
 
-export default function InputMail({ name="", propsValue="", cls="", id="" }) {
+export default function InputMail({ cls="", id="", propsValue="" }) {
     const applyCls = `border-b-2 border-yellow-500 focus:outline-none ${ cls }`;
-    const [val, setVal] = useState(propsValue);
+    
+    useEffect(() => {
+        if (id) {
+            const elm = document.getElementById(`${ id }_input`);
+            elm.value = propsValue;
+        }
+    });
 
-    const handleVal = (e) => {
-        setVal(e.target.value);
-    }
     return (
         <input 
-            id={ `${ id }_input` } type="mail" 
-            name={ name } value={ val } className={ applyCls }
-            onChange={ (e) => handleVal(e) } 
+            id={ `${ id }_input` } type="mail" className={ applyCls } 
         />
     )
 }
