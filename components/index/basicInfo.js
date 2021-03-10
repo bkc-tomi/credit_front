@@ -1,20 +1,30 @@
+import { useState } from "react";
 import Item from "./item";
 import ListInput from "./listInput";
 import ListContent from "./listContents";
 
 export default function BasicInfo() {
-    const address = [
-        {type: "text", name: "zipcode", id: "", displayName: "郵便番号", propsValue: "", cls: "w-full"},
-        {type: "text", name: "address_kana", id: "", displayName: "ふりがな", propsValue: "", cls: "w-full"},
-        {type: "text", name: "address", id: "", displayName: "住所", propsValue: "", cls: "w-full"},
+    const [kana, setKana] = useState("カナ");
+    const [name, setName] = useState("名前");
+    const [gender, setGender] = useState("性別");
+    const [birth, setBirth] = useState("誕生日");
+    const [years, setYears] = useState("年齢");
+    const [address, setAddress] = useState([]);
+    const [phoneNumber, setPhoneNumber] = useState([]);
+    const [mail, setMail] = useState([]);
+     
+    const addressType = [
+        {type: "text", id: "zipcode", displayName: "郵便番号", cls: "w-full"},
+        {type: "text", id: "address_kana", displayName: "ふりがな", cls: "w-full"},
+        {type: "text", id: "address", displayName: "住所", cls: "w-full"},
     ];
     
-    const phoneNumber = [
-        {type: "text", name: "phone-number", id: "", displayName: "電話番号", propsValue: "", cls: "w-full"}
+    const phoneNumberType = [
+        {type: "text", id: "phone", displayName: "電話番号", cls: "w-full"}
     ];
     
-    const mail = [
-        {type: "mail", name: "mail", id: "", displayName: "メール", propsValue: "", cls: "w-full"}
+    const mailType = [
+        {type: "mail", id: "mail", displayName: "メール", cls: "w-full"}
     ];
 
     return (
@@ -30,38 +40,56 @@ export default function BasicInfo() {
           <div className="md:col-span-3">
             <h2 className="text-yellow-500 text-lg text-center">- 基本情報 -</h2>
             <div>
-              <Item propsValue="ぐーぐる たろう" id="kana" type="text" cls="text-sm"/>
-              <Item propsValue="グーグル　太郎" id="name" cls="text-lg font-semibold"/>
-              <Item propsValue="男" id="gender" cls="text-gray-400"/>
-              <Item propsValue="1998年9月27日" id="birth" type="date" cls="text-gray-400"/>
-              <Item propsValue="22歳" id="years" type="number"cls="text-gray-400" />
+              <Item propsValue={ kana } func={ setKana } id="kana" type="text" cls="text-sm"/>
+              <Item propsValue={ name } func={ setName } id="name" cls="text-lg font-semibold"/>
+              <Item propsValue={ gender } func={ setGender } id="gender" cls="text-gray-400"/>
+              <Item propsValue={ birth } func={ setBirth } id="birth" type="date" cls="text-gray-400"/>
+              <Item propsValue={ years } func={ setYears } id="years" type="number"cls="text-gray-400" />
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- 住所 -</h3>
-              <ListContent id="address1">
-                  <div className="">150-0002</div>
-                  <div className="text-sm">とうきょうとしぶやくしぶや 3-21-3</div>
-                  <div className="font-semibold mb-2">東京都渋谷区渋谷 3-21-3</div>
-              </ListContent>
-              <ListInput inputs={ address }/>
+              {
+                address.map((val, index) => {
+                  return (
+                    <ListContent id={`address${ index }`} key={ index } target={ val } propsValue={ address } func={ setAddress }>
+                        <div className="">{val.zipcode}</div>
+                        <div className="text-sm">{ val.address_kana }</div>
+                        <div className="font-semibold mb-2">{ val.address }</div>
+                    </ListContent>
+                  );
+                })
+              }
+              <ListInput inputs={ addressType } propsValue={ address } func={ setAddress }/>
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- 電話番号 -</h3>
-              <ListContent id="phone1">
-                  <div className="mb-2">+81-3-6384-9000</div>
-              </ListContent>
+              {
+                phoneNumber.map((val, index) => {
+                  return (
+                    <ListContent id={`phone${ index }`} key={ index } target={ val } propsValue={ phoneNumber } func={ setPhoneNumber }>
+                        <div className="mb-2">{ val.phone }</div>
+                    </ListContent>
+                  );
+                })
+              }
 
-              <ListInput inputs={ phoneNumber }/>
+              <ListInput inputs={ phoneNumberType } propsValue={ phoneNumber } func={ setPhoneNumber }/>
             </div>
 
             <div>
               <h3 className="text-gray-400 text-md text-center">- メールアドレス -</h3>
-              <ListContent id="mail1">
-                  <div className="mb-2">aaa@gmail.com</div>
-              </ListContent>
-              <ListInput inputs={ mail }/>
+              {
+                mail.map((val, index) => {
+                  return (
+                    <ListContent id={`mail${ index }`} key={ index } target={ val } propsValue={ mail } func={ setMail}>
+                        <div className="mb-2">{ val.mail }</div>
+                    </ListContent>
+                  );
+                })
+              }
+              <ListInput inputs={ mailType } propsValue={ mail } func={ setMail }/>
             </div>
           </div>
         </div>

@@ -1,43 +1,51 @@
 import ListInput from "./listInput";
 import ListContent from "./listContents";
+import { useState } from "react";
 
 export default function Motivation() {
+    const [inputs, setInputs] = useState([]);
     const inputList = [
-        {type: "text", name: "date", id: "", displayName: "企業名", propsValue: "", cls: "w-full"},
-        {type: "textarea", name: "company-name", id: "", displayName: "志望動機", propsValue: "", cls: "w-full"},
-        {type: "text", name: "type", id: "", displayName: "通勤時間", propsValue: "", cls: "w-full"},
-        {type: "text", name: "member", id: "", displayName: "扶養家族", propsValue: "", cls: "w-full"},
-        {type: "text", name: "job", id: "", displayName: "配偶者", propsValue: "", cls: "w-full"},
-        {type: "text", name: "in-out", id: "", displayName: "配偶者の扶養", propsValue: "", cls: "w-full"},
-        {type: "textarea", name: "in-out", id: "", displayName: "その他・希望欄", propsValue: "", cls: "w-full"},
+        {type: "text", id: "moti_company", displayName: "企業名", cls: "w-full"},
+        {type: "textarea", id: "motivation", displayName: "志望動機", cls: "w-full"},
+        {type: "text", id: "time", displayName: "通勤時間", cls: "w-full"},
+        {type: "text", id: "member", displayName: "扶養家族", cls: "w-full"},
+        {type: "text", id: "spouse", displayName: "配偶者", cls: "w-full"},
+        {type: "text", id: "spouse_depend", displayName: "配偶者の扶養", cls: "w-full"},
+        {type: "textarea", id: "other", displayName: "その他・希望欄", cls: "w-full"},
     ];
 
     return (
         <div className="p-2 md:p-6">
             <h2 className="text-yellow-500 text-lg text-center">- 志望動機 -</h2>
-            <ListContent>
-                <div className="grid grid-cols-3">
-                    <div>株式会社　＋＋＋＋＋</div>
-                    <div className="col-span-2 flex flex-col">
-                        <div className="my-3">
-                            <p className="text-gray-400">志望動機</p>
-                            経理の経験を生かして、将来経営戦略に直接参画できる経理のスペシャリストになりたいと考えています。前職では経理部門と経営戦略部門が分離しており、経理は各部門から提出された数値をまとめることのみでした。経営戦略を構築できる経理担当者を目指しています。
-                        </div>
-                        <div className="flex flex-row flex-wrap my-3">
-                            <div className="text-gray-400 mx-3">通勤時間: １時間</div>
-                            <div className="text-gray-400 mx-3">扶養家族: なし</div>
-                            <div className="text-gray-400 mx-3">配偶者: なし</div>
-                            <div className="text-gray-400 mx-3">配偶者の扶養: なし</div>
-                        </div>
-                        <div className="my-3">
-                            <p className="text-gray-400">その他・希望欄</p>
-                            営業職を希望します。現在就業中のため平日は１７時以降にお電話いただけると幸いです。
-                        </div>
-                    </div>
-                </div>
-            </ListContent>
+            {
+                    inputs.map((input, index) => {
+                        return (
+                        <ListContent id={`motivation${ index }`} key={ index }  target={ input } propsValue={ inputs } func={ setInputs }>
+                            <div className="grid grid-cols-3">
+                                <div>{input.moti_company}</div>
+                                <div className="col-span-2 flex flex-col">
+                                    <div className="my-3">
+                                        <p className="text-gray-400">志望動機</p>
+                                        { input.motivation }
+                                    </div>
+                                    <div className="flex flex-row flex-wrap my-3">
+                                        <div className="text-gray-400 mx-3">通勤時間:{ input.time }</div>
+                                        <div className="text-gray-400 mx-3">扶養家族: { input.member }</div>
+                                        <div className="text-gray-400 mx-3">配偶者: { input.spouse }</div>
+                                        <div className="text-gray-400 mx-3">配偶者の扶養: { input.spouse_depend }</div>
+                                    </div>
+                                    <div className="my-3">
+                                        <p className="text-gray-400">その他・希望欄</p>
+                                        { input.other }
+                                    </div>
+                                </div>
+                            </div>
+                        </ListContent>
+                        );
+                    })
+                }
             <div className="md:mx-16 md:my-3">
-                <ListInput inputs={ inputList } />
+                <ListInput inputs={ inputList } propsValue={ inputs } func={ setInputs }/>
             </div>
         </div>
     )

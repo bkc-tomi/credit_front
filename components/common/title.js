@@ -4,28 +4,28 @@ export default function Title({ width, height }) {
             <svg width={ width } height={ height } xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 440 220">
             <defs>
             <linearGradient y1="181.577" id="LinearGradient" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             <linearGradient y1="181.577" id="LinearGradient_2" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             <linearGradient y1="181.577" id="LinearGradient_3" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             <linearGradient y1="181.577" id="LinearGradient_4" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             <linearGradient y1="181.577" id="LinearGradient_5" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             <linearGradient y1="181.577" id="LinearGradient_6" x1="39.0417" y2="44.4842" x2="409.361" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)">
-            <stop stop-color="#fcd34d" offset="0.00150023"/>
-            <stop stop-color="#eab308" offset="1"/>
+            <stop stopColor="#fcd34d" offset="0.00150023"/>
+            <stop stopColor="#eab308" offset="1"/>
             </linearGradient>
             </defs>
             <g id="レイヤー 1">
