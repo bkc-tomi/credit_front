@@ -8,6 +8,7 @@ import Hobby from "../components/index/hobby";
 import Motivation from "../components/index/motivation";
 
 export default function Home() {
+
   return (
     <Layout>
       <div className="flex flex-col my-3 pb-10">
