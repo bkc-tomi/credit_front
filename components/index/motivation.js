@@ -1,8 +1,12 @@
 import ListInput from "./listInput";
 import ListContent from "./listContents";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Motivation() {
+    const storageData = {
+        inputs: [],
+    }
+
     const [inputs, setInputs] = useState([]);
     const inputList = [
         {type: "text", id: "moti_company", displayName: "企業名", cls: "w-full"},
@@ -13,6 +17,33 @@ export default function Motivation() {
         {type: "text", id: "spouse_depend", displayName: "配偶者の扶養", cls: "w-full"},
         {type: "textarea", id: "other", displayName: "その他・希望欄", cls: "w-full"},
     ];
+
+    const handleBeforeunload = (e) => {
+        const items = {
+          inputs: inputs,
+        }
+        localStorage.setItem("motivation", JSON.stringify(items));
+        console.log("save", items);
+    };
+
+    useEffect(() => {
+        // ローカルストレージの内容を取得
+        const jsonItems = localStorage.getItem("motivation");
+        const items = JSON.parse(jsonItems);
+        if (items) {
+          // ステートにセット
+          setInputs(items.inputs);
+        } else {
+          // ローカルストレージとステートに初期値をセット
+          localStorage.setItem("motivation", JSON.stringify(storageData));
+          setInputs(storageData.inputs);
+        }
+    }, []);
+      
+    useEffect(() => {
+        window.addEventListener("beforeunload", handleBeforeunload);
+        return () => window.removeEventListener("beforeunload", handleBeforeunload);
+    }, [inputs]);
 
     return (
         <div className="p-2 md:p-6">

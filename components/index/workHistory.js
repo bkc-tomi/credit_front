@@ -1,8 +1,12 @@
 import ListInput from "./listInput";
 import ListContent from "./listContents";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function WorkHistory() {
+    const storageData = {
+        inputs: [],
+    }
+
     const [inputs, setInputs] = useState([]);
     const inputList = [
         {type: "date", id: "work_date", displayName: "日付", cls: "w-full"},
@@ -12,6 +16,32 @@ export default function WorkHistory() {
         {type: "textarea", id: "job", displayName: "担当業務", cls: "w-full"},
         {type: "text", id: "work_in_out", displayName: "入社・退社等", cls: "w-full"},
     ];
+
+    const handleBeforeunload = (e) => {
+        const items = {
+          inputs: inputs,
+        }
+        localStorage.setItem("workHistory", JSON.stringify(items));
+        console.log("save", items);
+    };
+
+    useEffect(() => {
+        // ローカルストレージの内容を取得
+        const jsonItems = localStorage.getItem("workHistory");
+        const items = JSON.parse(jsonItems);
+        if (items) {
+          // ステートにセット
+          setInputs(items.inputs);
+        } else {
+          // ローカルストレージとステートに初期値をセット
+          localStorage.setItem("workHistory", JSON.stringify(storageData));
+          setInputs(storageData.inputs);
+        }
+    }, []);
+    useEffect(() => {
+        window.addEventListener("beforeunload", handleBeforeunload);
+        return () => window.removeEventListener("beforeunload", handleBeforeunload);
+    }, [inputs]);
 
     return (
         <div className="p-2 md:p-6">
@@ -32,7 +62,7 @@ export default function WorkHistory() {
                                         <div className="mx-3 text-gray-400">職種: {input.type}</div>
                                         <div className="mx-3 text-gray-400">従業員数: { input.member }</div>
                                     </div>
-                                    <div className="mx-3">
+                                    <div className="mx-3 overflow-ellipsis">
                                         { input.job }
                                     </div>
                                 </div>
