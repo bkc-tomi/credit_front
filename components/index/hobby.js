@@ -4,20 +4,15 @@ import { useState, useEffect } from "react";
 import Item from "./item";
 
 export default function Hobby() {
+    /** 変数定義 ---------------------------------------------------------------------*/
+    // ローカルストレージ構造定義
     const storageData = {
         hobby: "趣味や特技などを入力してください。",
     }
-
-    const [ hobby, setHobby] = useState("趣味や特技などを入力してください。");
-
-    const handleBeforeunload = (e) => {
-        const items = {
-            hobby: hobby,
-        }
-        localStorage.setItem("hobby", JSON.stringify(items));
-        console.log("save", items);
-    };
-
+    // ステート
+    const [ hobby, setHobby ] = useState("趣味や特技などを入力してください。");
+    /** 副作用フック -----------------------------------------------------------------*/
+    // ローカルストレージからデータの取得(初期値のセット)
     useEffect(() => {
         // ローカルストレージの内容を取得
         const jsonItems = localStorage.getItem("hobby");
@@ -31,12 +26,14 @@ export default function Hobby() {
           setHobby(storageData.hobby);
         }
     }, []);
-      
+    // ローカルストレージへデータの保存(ステートが変更されるごと)
     useEffect(() => {
-        window.addEventListener("beforeunload", handleBeforeunload);
-        return () => window.removeEventListener("beforeunload", handleBeforeunload);
+        const items = {
+            hobby: hobby,
+        }
+        localStorage.setItem("hobby", JSON.stringify(items));
     }, [hobby]);
-
+    /** コンポーネント返却 ------------------------------------------------------------*/
     return (
         <div className="p-2 md:p-6">
             <h2 className="text-yellow-500 text-lg text-center">- 趣味・特技 -</h2>

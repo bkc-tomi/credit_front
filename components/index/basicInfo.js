@@ -3,23 +3,14 @@ import Item from "./item";
 import ListInput from "./listInput";
 import ListContent from "./listContents";
 
-// type BasicInfoVal = {
-//   kana: String,
-//   name: String,
-//   gender: String,
-//   birth: String,
-//   years: String,
-//   address: String[],
-//   phoneNumber: String[],
-//   mail: String[],
-// }
-
 export default function BasicInfo() {
+    /** 変数定義 ---------------------------------------------------------------------*/
+    // ローカルストレージ構造定義
     const storageData = {
-      kana: "カナ", name: "名前", gender: "性別", birth: "誕生日", years: "年齢",
-      address: [], phoneNumber: [], mail: [],
+        kana: "カナ", name: "名前", gender: "性別", birth: "誕生日", years: "年齢",
+        address: [], phoneNumber: [], mail: [],
     }
-
+    // ステート
     const [kana, setKana] = useState("");
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
@@ -28,77 +19,73 @@ export default function BasicInfo() {
     const [address, setAddress] = useState([]);
     const [phoneNumber, setPhoneNumber] = useState([]);
     const [mail, setMail] = useState([]);
-    
-    const handleBeforeunload = (e) => {
-      const items = {
-        kana: kana, name: name, gender: gender, birth: birth, years: years,
-        address: address, phoneNumber: phoneNumber, mail: mail,
-      }
-      localStorage.setItem("basicInfo", JSON.stringify(items));
-      console.log("save", items);
-    };
-
-    useEffect(() => {
-      // ローカルストレージの内容を取得
-      const jsonItems = localStorage.getItem("basicInfo");
-      const items = JSON.parse(jsonItems);
-      if (items) {
-        // ステートにセット
-        setKana(items.kana);
-        setName(items.name);
-        setGender(items.gender);
-        setBirth(items.birth);
-        setYears(items.years);
-        setAddress(items.address);
-        setPhoneNumber(items.phoneNumber);
-        setMail(items.mail);
-      } else {
-        // ローカルストレージとステートに初期値をセット
-        localStorage.setItem("basicInfo", JSON.stringify(storageData));
-        setKana(storageData.kana);
-        setName(storageData.name);
-        setGender(storageData.gender);
-        setBirth(storageData.birth);
-        setYears(storageData.years);
-        setAddress(storageData.address);
-        setPhoneNumber(storageData.phoneNumber);
-        setMail(storageData.mail);
-      }
-    }, []);
-    
-    useEffect(() => {
-      window.addEventListener("beforeunload", handleBeforeunload);
-      return () => window.removeEventListener("beforeunload", handleBeforeunload);
-    }, [kana, name, gender, birth, years, address, phoneNumber, mail]);
-
+    // 入力セット構造定義
     const addressType = [
         {type: "text", id: "zipcode", displayName: "郵便番号", cls: "w-full"},
         {type: "text", id: "address_kana", displayName: "ふりがな", cls: "w-full"},
         {type: "text", id: "address", displayName: "住所", cls: "w-full"},
     ];
-    
     const phoneNumberType = [
         {type: "text", id: "phone", displayName: "電話番号", cls: "w-full"}
     ];
-    
     const mailType = [
         {type: "mail", id: "mail", displayName: "メール", cls: "w-full"}
     ];
-
+    
+    /** 副作用フック -----------------------------------------------------------------*/
+    // ローカルストレージからデータの取得(初期値のセット)
+    useEffect(() => {
+        // ローカルストレージの内容を取得
+        const jsonItems = localStorage.getItem("basicInfo");
+        const items = JSON.parse(jsonItems);
+        if (items) {
+            // ステートにセット
+            setKana(items.kana);
+            setName(items.name);
+            setGender(items.gender);
+            setBirth(items.birth);
+            setYears(items.years);
+            setAddress(items.address);
+            setPhoneNumber(items.phoneNumber);
+            setMail(items.mail);
+        } else {
+            // ローカルストレージとステートに初期値をセット
+            localStorage.setItem("basicInfo", JSON.stringify(storageData));
+            setKana(storageData.kana);
+            setName(storageData.name);
+            setGender(storageData.gender);
+            setBirth(storageData.birth);
+            setYears(storageData.years);
+            setAddress(storageData.address);
+            setPhoneNumber(storageData.phoneNumber);
+            setMail(storageData.mail);
+        }
+    }, []);
+    // ローカルストレージへデータの保存(ステートが変更されるごと)
+    useEffect(() => {
+        const items = {
+            kana: kana, name: name, gender: gender, birth: birth, years: years,
+            address: address, phoneNumber: phoneNumber, mail: mail,
+        }
+        localStorage.setItem("basicInfo", JSON.stringify(items));
+    }, [kana, name, gender, birth, years, address, phoneNumber, mail]);
+    /** コンポーネント返却 ------------------------------------------------------------*/
     return (
         <div className="bg-gray-200 flex flex-col md:grid md:grid-rows-none md:grid-cols-4 px-2 py-6 md:px-6 md:py-12">
           <div className="flex justify-center items-center">
-            <div className="text-gray-500 md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <div className="flex flex-col justify-center items-center text-gray-500 md:hidden my-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
             </svg>
+            証明写真はPDF出力の際に選択してください。
             </div>
-            <div className="hidden md:block md:text-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="225" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <div className="hidden md:text-gray-500 md:flex flex-col justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="225" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
             </svg>
+            証明写真はPDF出力の際に選択してください。
             </div>
           </div>
           <div className="md:col-span-3">
@@ -120,8 +107,6 @@ export default function BasicInfo() {
                 年齢:　
                 <Item propsValue={ years } func={ setYears } id="years" type="number"cls="text-gray-400" />
               </div>
-              
-              
             </div>
 
             <div>
