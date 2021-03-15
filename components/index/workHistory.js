@@ -49,7 +49,7 @@ export default function WorkHistory() {
                 {
                     inputs.map((input, index) => {
                         return (
-                        <ListContent id={`work${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs }>
+                        <ListContent id={`work${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs } cls="md:px-16">
                             <div className="grid grid-cols-3">
                                 <div className="text-gray-400">{ input.work_date }</div>
                                 <div className="col-span-2 flex flex-col">

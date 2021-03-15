@@ -49,7 +49,7 @@ export default function Motivation() {
             {
                     inputs.map((input, index) => {
                         return (
-                        <ListContent id={`motivation${ index }`} key={ index }  target={ input } propsValue={ inputs } func={ setInputs }>
+                        <ListContent id={`motivation${ index }`} key={ index }  target={ input } propsValue={ inputs } func={ setInputs } cls="md:px-16">
                             <div className="grid grid-cols-3">
                                 <div>{input.moti_company}</div>
                                 <div className="col-span-2 flex flex-col">

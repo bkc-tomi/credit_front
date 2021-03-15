@@ -46,7 +46,7 @@ export default function EducationHistory() {
                 {
                     inputs.map((input, index) => {
                         return (
-                            <ListContent id={`eh${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs }>
+                            <ListContent id={`eh${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs } cls="md:px-16">
                                 <div className="grid grid-cols-3">
                                     <div className="text-gray-400">{ input.edu_date }</div>
                                     <div className="col-span-2 grid grid-cols-5">

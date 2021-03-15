@@ -90,11 +90,11 @@ export default function BasicInfo() {
           </div>
           <div className="md:col-span-3">
             <h2 className="text-yellow-500 text-lg text-center">- 基本情報 -</h2>
-            <div>
+            <div className="md:px-2">
               <Item propsValue={ kana } func={ setKana } id="kana" type="text" cls="text-sm mb-0"/>
               <Item propsValue={ name } func={ setName } id="name" cls="text-lg font-semibold mt-0"/>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 px-2 md:px-4">
               <div className="flex flex-row justify-start items-center text-gray-400">
                 性別:　
                 <Item propsValue={ gender } func={ setGender } id="gender" cls="text-gray-400"/>
@@ -114,7 +114,7 @@ export default function BasicInfo() {
               {
                 address.map((val, index) => {
                   return (
-                    <ListContent id={`address${ index }`} key={ index } target={ val } propsValue={ address } func={ setAddress }>
+                    <ListContent id={`address${ index }`} key={ index } target={ val } propsValue={ address } func={ setAddress } cls="md:px-4">
                         <div className="">{val.zipcode}</div>
                         <div className="text-sm">{ val.address_kana }</div>
                         <div className="font-semibold mb-2">{ val.address }</div>
@@ -130,7 +130,7 @@ export default function BasicInfo() {
               {
                 phoneNumber.map((val, index) => {
                   return (
-                    <ListContent id={`phone${ index }`} key={ index } target={ val } propsValue={ phoneNumber } func={ setPhoneNumber }>
+                    <ListContent id={`phone${ index }`} key={ index } target={ val } propsValue={ phoneNumber } func={ setPhoneNumber } cls="md:px-4">
                         <div className="mb-2">{ val.phone }</div>
                     </ListContent>
                   );
@@ -145,7 +145,7 @@ export default function BasicInfo() {
               {
                 mail.map((val, index) => {
                   return (
-                    <ListContent id={`mail${ index }`} key={ index } target={ val } propsValue={ mail } func={ setMail}>
+                    <ListContent id={`mail${ index }`} key={ index } target={ val } propsValue={ mail } func={ setMail} cls="md:px-4">
                         <div className="mb-2">{ val.mail }</div>
                     </ListContent>
                   );
