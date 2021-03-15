@@ -8,7 +8,9 @@ export default function GeneratePdf() {
     useEffect(() => {
         (async() => {
             // herokuに事前にリクエストを送り立ち上げる。
-            const res = await fetch("http://localhost:8000/starter/", { mode: 'cors' });
+            const url = "https://credit-app-2021.herokuapp.com/generate_pdf/";
+        // const url = "http://localhost:8000/generate_pdf/";
+            const res = await fetch(url, { mode: 'cors' });
             const text = await res.text();
             if (text == "started") {
                 // バックエンドの準備ができたらボタンをアクティブ
