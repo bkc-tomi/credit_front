@@ -1,6 +1,7 @@
 import Button from "../common/button";
 
-export default function ListContent({ id="", target={}, propsValue=[], func=null, children }) {
+export default function ListContent({ id="", target={}, propsValue=[], func=null, cls, children }) {
+    const applyCls = `relative hover:shadow-sm rounded-md md:my-2 p-2 ${ cls }`
     const handleDisplay = () => {
         const div = document.getElementById(`${ id }_hover`);
         div.className = "absolute top-0 right-0";
@@ -14,9 +15,6 @@ export default function ListContent({ id="", target={}, propsValue=[], func=null
     const handleDelete = () => {
         const tgtStr = Object.values(target).join("^");
         const newValues = propsValue.filter(val => Object.values(val).join("^") != tgtStr);
-        console.log(tgtStr);
-        console.log(propsValue);
-        console.log(newValues);
         if (func) {
             func(newValues);
         }
@@ -24,7 +22,7 @@ export default function ListContent({ id="", target={}, propsValue=[], func=null
     
     return (
         <div 
-            className="relative hover:shadow-sm rounded-md md:mx-16 md:my-2 p-2"
+            className={ applyCls }
             onMouseOver={ () => handleDisplay() } 
             onMouseLeave={ () => handleHide() }
             onTouchStartCapture={ () => handleDisplay() }

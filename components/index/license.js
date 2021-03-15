@@ -45,7 +45,7 @@ export default function License() {
             {
                     inputs.map((input, index) => {
                         return (
-                            <ListContent id={`li${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs }>
+                            <ListContent id={`li${ index }`} key={ index } target={ input } propsValue={ inputs } func={ setInputs } cls="md:px-16" >
                                 <div className="grid grid-cols-3">
                                     <div className="text-gray-400">{ input.li_date }</div>
                                     <div className="col-span-2 text-lg font-semibold">{ input.li_company }</div>

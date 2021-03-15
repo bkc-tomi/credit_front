@@ -16,7 +16,7 @@ export default function InputFile({ id="", name="", cls="" }) {
                         accept=".json"
                         onChange={ () => getFileName() }
                     />
-                    <label for={ name }>ファイルを選択</label>
+                    <label htmlFor={ name }>ファイルを選択</label>
             </div>
             <p id="input-file-name-view" className="text-gray-400 mx-3">ファイルが選択されていません。</p>
         </div>
