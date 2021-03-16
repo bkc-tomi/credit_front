@@ -23,6 +23,10 @@ export default function Form({ flug }) {
         });
         // 選択された志望動機取得
         const select  = document.getElementById("select_motivation").value;
+        if (select === "志望動機なし") {
+            alert("志望動機が作成されていません。作成してからPDF出力をしてください。");
+            return;
+        }
         var jsonItems = localStorage.getItem("motivation");
         var parse     = JSON.parse(jsonItems);
         const edu     = parse.inputs.filter(input => input.moti_company == select);
@@ -55,7 +59,10 @@ export default function Form({ flug }) {
 
     const getSelectData = () => {
         if (motivation.length <= 0) {
-            return <div>loading...</div>;
+            const items = [
+                { moti_company: "志望動機なし", motivation: "志望動機を作成してください。" }
+            ]
+            return <Select id="select_motivation" name="generate" items={ items } />;
         } else {
             return <Select id="select_motivation" name="generate" items={ motivation } />
         }
@@ -66,7 +73,7 @@ export default function Form({ flug }) {
         <div className="p-3 md:px-16">
             <p className="font-semibold">志望動機選択</p>
             { select }
-            <Button cls="w-full py-3 my-8" disabled={ flug } func={() => sendPdfData() }>PDF生成</Button>
+            <Button cls="w-full py-3 my-8" disabled={ !flug } func={() => sendPdfData() }>PDF生成</Button>
         </div>
     )
 }
