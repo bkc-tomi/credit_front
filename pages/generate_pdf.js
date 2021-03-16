@@ -9,7 +9,7 @@ export default function GeneratePdf() {
         (async() => {
             // herokuに事前にリクエストを送り立ち上げる。
             const url = "https://credit-app-2021.herokuapp.com/starter/";
-        // const url = "http://localhost:8000/generate_pdf/";
+            // const url = "http://localhost:8000/starter/";
             const res = await fetch(url, { mode: 'cors' });
             const text = await res.text();
             if (text == "started") {
